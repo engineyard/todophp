@@ -38,11 +38,11 @@ Next we need to setup the database connection in <code>(todophp)/app/config/boot
     'password' => '',
     'database' => 'todo',
     'encoding' => 'UTF-8'
- ));
+     ));
 
 ## Testing the setup
 
-At this point you can browse <code>http://localhost/lithium/</code> and run some tests to make sure things are good to go.
+At this point you can browse <code>http://localhost/todophp/</code> and run some tests to make sure things are good to go.
 
 # Database Schema
 
