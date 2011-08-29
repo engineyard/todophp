@@ -72,7 +72,9 @@ Here are the tables I created.
 
 ### Ruby Models
 
-The task model in the Rails demo app is in app/models/task.rb and looks like this
+First let's look at the Ruby models, and then convert them to PHP Lithium.
+
+/app/models/list.rb...
 
     class List < ActiveRecord::Base
 
@@ -86,6 +88,18 @@ The task model in the Rails demo app is in app/models/task.rb and looks like thi
 	  end
 
 	end
+	
+/app/models/task.rb...
+
+	class Task < ActiveRecord::Base
+    
+	    belongs_to :list, :class_name => "List", :foreign_key => "list_id"
+    
+	    validates :name, :presence => true
+
+
+	end
+
 	
 ### PHP Models
 
@@ -120,7 +134,9 @@ We added a validation rule for name.
 		protected $hasMany = array('Tasks');
     }
 
-In the Ruby version of this List Model, there was a validation rule for unique names. To accomplish the same functionality, We can add this validation rule to the Validator class by using the <code>Validator::add</code> method. I put this in a new file <code>(todophp)/app/config/bootstrap/validator.php</code>.
+In the Ruby version of this List Model, there was a validation rule for unique names. To accomplish the same functionality, We can add this validation rule to the Validator class by using the <code>Validator::add</code> method. I put this in a new file.
+
+(todophp)/app/config/bootstrap/validator.php
 
     use \lithium\util\Validator;
 
@@ -143,7 +159,9 @@ To add this to the bootstrap list, I added the file reference to <code>(todophp)
 
 ### Ruby Controllers
 
-Let's recreate the list controller first. Here it is in Ruby.
+Here are the List and Task controllers in Ruby
+
+/app/controllers/lists_controller.rb...
 
     class ListsController < ApplicationController
 
@@ -166,6 +184,61 @@ Let's recreate the list controller first. Here it is in Ruby.
 	    end
 	  end
 	end
+	
+/app/controllers/tasks_controller.rb...
 
-## more soon...
+class TasksController < ApplicationController
+
+	def index
+	    @todo   = Task.where(:done => false)
+	    @task   = Task.new
+	    @lists  = List.all
+	    @list   = List.new
+    
+	    respond_to do |format|
+	      format.html
+	    end
+	  end
+
+
+	  def create
+	    @task = Task.new(params[:task])
+	    if @task.save
+	        flash[:notice] = "Your task was created."
+	    else
+	        flash[:alert] = "There was an error creating your task."
+	    end
+	    redirect_to(tasks_url(:list => params[:task][:list_id]))
+	  end
+  
+
+	  def update
+	    @task = Task.find(params[:id])
+
+	    respond_to do |format|
+	      if @task.update_attributes(params[:task])
+	        format.html { redirect_to( tasks_url(:list => @task.list.id), :notice => 'Task was successfully updated.') }
+	      else
+	        format.html { render :action => "edit" }
+	      end
+	    end
+	  end
+
+
+	  def destroy
+	    @task = Task.find(params[:id])
+	    @task.destroy
+
+	    respond_to do |format|
+	      format.html { redirect_to(tasks_url(:list => @task.list_id)) }
+	    end
+	  end
+  
+ 
+	end
+
+### PHP Controllers
+
+
+
 
