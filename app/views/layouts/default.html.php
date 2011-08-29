@@ -6,26 +6,43 @@
  * @license       http://opensource.org/licenses/bsd-license.php The BSD License
  */
 ?>
+
 <!doctype html>
 <html>
 <head>
-	<?php echo $this->html->charset();?>
-	<title>Application > <?php echo $this->title(); ?></title>
-	<?php echo $this->html->style(array('debug', 'lithium')); ?>
-	<?php echo $this->scripts(); ?>
-	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>
+  <title>Getting Things Done with Engine Yard AppCloud</title>
+  <?php echo $this->html->style(array('core', 'jqtabs')); ?>
+  <link href="css/core.css" rel="stylesheet" type="text/css">
+  <link href="css/jqtabs.css" rel="stylesheet" type="text/css">
+  <?php echo $this->scripts(); ?>
+
 </head>
-<body class="app">
-	<div id="container">
-		<div id="header">
-			<h1>Application</h1>
-			<h2>
-				Powered by <?php echo $this->html->link('Lithium', 'http://lithify.me/'); ?>.
-			</h2>
-		</div>
-		<div id="content">
+<body>
+    <div id="all">
+        <div id="header">
+            <div id="logo">
+            	<a href="http://www.engineyard.com">Engine Yard</a>
+            </div>
+            <h1><span class="intro">Getting Things Done</span> deployed on <span class="branding">Engine Yard AppCloud</span></h1>
+            <p class="sample">Sample Deployment Application</p>
+        </div>
+        <div id="content">
+            <% if alerted = alert %>
+                <p id="alert"><%= alerted %></p>
+            <% end %>
 			<?php echo $this->content(); ?>
-		</div>
-	</div>
-</body>
-</html>
+			 </div>
+				<div id="foot">
+					<div class="copyright">
+					<p>   
+					  Running on Engine Yard: <a href="http://engineyard.com/products/appcloud">The Ruby Cloud</a> and <a href="http://www.rubyonrails.org">Rails 3</a><br>
+					  Ruby is the Language of the Cloud.<br>
+					  Copyright © Engine Yard, Inc. All rights reserved.
+					</p>
+					</div>
+				</div>
+			</div>
+			</body>
+			</html>
+			
+		

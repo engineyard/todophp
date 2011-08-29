@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-class TasksController extends \lithium\action\Controller {
+class ListsController extends \lithium\action\Controller {
 	
 	
 	public function index() {
