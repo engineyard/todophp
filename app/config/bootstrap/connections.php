@@ -64,10 +64,10 @@ use lithium\data\Connections;
 Connections::add('default', array(
 'type' => 'database',
 'adapter' => 'MySql',
-'host' => 'localhost',
-'login' => 'root',
-'password' => '',
-'database' => 'todo',
+'host' => '10.194.111.8',
+'login' => 'user_ecb1bea2',
+'password' => 'k%Vg@;JKc!^H2E',
+'database' => 'db_ecb1bea2',
 'encoding' => 'UTF-8'
  ));
 
