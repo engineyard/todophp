@@ -67,7 +67,7 @@ Connections::add('default', array(
 'host' => 'localhost',
 'login' => 'root',
 'password' => '',
-'database' => 'my_app',
+'database' => 'todo',
 'encoding' => 'UTF-8'
  ));
 

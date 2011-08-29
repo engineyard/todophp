@@ -8,18 +8,19 @@
     <th></th>
   </tr>
 
-<% @lists.each do |list| %>
+
+<?php foreach($lists as $list) { ?>
   <tr>
-    <td><%= list.name %></td>
-    <td><%= link_to 'Show', list %></td>
-    <td><%= link_to 'Edit', edit_list_path(list) %></td>
+    <td><?php echo($list->name) ;?></td>
+    <td>show</td>
+    <td>edit</td>
     <td></td>
   </tr>
-<% end %>
+<?php } ?>
 </table>
 
 <br />
 
-<?php echo $this->html->link('Google', 'http://www.google.com'); ?>
-<%= link_to 'New List', new_list_path %>
+<?php echo $this->html->link('New List', '/lists/new'); ?>
+
 

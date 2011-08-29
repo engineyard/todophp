@@ -27,9 +27,9 @@
             <p class="sample">Sample Deployment Application</p>
         </div>
         <div id="content">
-            <% if alerted = alert %>
-                <p id="alert"><%= alerted %></p>
-            <% end %>
+            <?php if(isset($alert)) { ?>
+                <p id="alert">alert</p>
+            <?php } ?>
 			<?php echo $this->content(); ?>
 			 </div>
 				<div id="foot">

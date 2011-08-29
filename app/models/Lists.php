@@ -8,7 +8,7 @@ class Lists extends \lithium\data\Model {
 	    'name' => 'please enter a name'
 	);
 
-	protected $hasMany = array('Tasks');
+	public $hasMany = array('Tasks');
 
 }
 
