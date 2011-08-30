@@ -65,9 +65,9 @@ Connections::add('default', array(
 'type' => 'database',
 'adapter' => 'MySql',
 'host' => '10.194.111.8',
-'login' => 'user_ecb1bea2',
-'password' => 'k%Vg@;JKc!^H2E',
-'database' => 'db_ecb1bea2',
+'login' => 'user_ebe5ea67',
+'password' => '^.d$xWMpD@nL%9',
+'database' => 'db_ebe5ea67',
 'encoding' => 'UTF-8'
  ));
 
